@@ -14,51 +14,50 @@ public class program {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         frame.setLayout(new FlowLayout());
-        //static JFrame text = new JFrame("textfield");;
-        
-        JButton forwardBot = new JButton("Forward");
-        forwardBot.addActionListener(e -> {
-            System.out.println("forward");
-            f.setMove("F",100,100);
-        });
-        
-        JButton backwardsBot = new JButton("Backward");
-        
-        backwardsBot.addActionListener(e -> {
-            System.out.println("backward");
-            f.setMove("B",100,100);
-        });
+
+//      static JFrame text = new JFrame("textfield");;
+//      
+//      JButton forwardBot = new JButton("Forward");
+//      forwardBot.addActionListener(e -> {
+//          System.out.println("forward");
+//          f.setMove("F",100,100);
+//      });
+//      
+//      JButton backwardsBot = new JButton("Backward");
+//      
+//      backwardsBot.addActionListener(e -> {
+//          System.out.println("backward");
+//          f.setMove("B",100,100);
+//      });
         
         frame.addKeyListener(new KeyAdapter() {
-    		boolean isEnabled = true;
+    		boolean sprintToggle = true;
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_I) {
-                    isEnabled = !isEnabled;
-                }
-                if(isEnabled) {
-                	int power = 100;
+		    int left = 0;
+		    int right = 0;
+		    if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+			    sprintToggle = !sprintToggle;
+		    }
                     if (e.getKeyCode() == KeyEvent.VK_W) {
-                        f.setMotors(power, power);
+                	    left = 25;
+			    right = 25;
                     } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                        f.setMotors(-power, -power);
+                            left = 25;
+			    right = 25;
                     } else if (e.getKeyCode() == KeyEvent.VK_A) {
-                        f.setMotors(-power, power);
+                            left = -25;
+			    right = 25;
                     } else if (e.getKeyCode() == KeyEvent.VK_D) {
-                        f.setMotors(power, -power);
-                   }	
-                } else {
-                	int power = 25;
-                    if (e.getKeyCode() == KeyEvent.VK_W) {
-                        f.setMotors(power, power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                        f.setMotors(-power, -power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_A) {
-                        f.setMotors(-power, power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
-                        f.setMotors(power, -power);
-                   }
-                }
+                            left = 25;
+			    right = -25;
+                    }
+		    if (sprintToggle) {
+		    	f.setMotors(3*left,3*right);
+		    }
+		    else {
+			f.setMotors(left,right);
+		    }
             }
 
             
