@@ -27,20 +27,50 @@ VThe creation of afinch robot that implements the controls of an average video g
 
 ### Code to Highlight
 ```java
-public static void followLine(Finch f) {
-	int left = f.getLine("L");
-	int right = f.getLine("R");
-	
-	System.out.println("left: " + left + " right: " + right);
-	if (left < 90) {
-		f.setMotors(0, 10);
-	} else if (right > 90) {
-		f.setMotors(10, 0);
-	} else {
-		f.setMotors(10, 10);
-	}
-	f.pause(.1);
-}
+        frame.addKeyListener(new KeyAdapter() {
+    		boolean isEnabled = true;
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_I) {
+                    isEnabled = !isEnabled;
+                }
+                if(isEnabled) {
+                	int power = 100;
+                    if (e.getKeyCode() == KeyEvent.VK_W) {
+                        f.setMotors(power, power);
+                    } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                        f.setMotors(-power, -power);
+                    } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                        f.setMotors(-power, power);
+                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
+                        f.setMotors(power, -power);
+                   }	
+                } else {
+                	int power = 25;
+                    if (e.getKeyCode() == KeyEvent.VK_W) {
+                        f.setMotors(power, power);
+                    } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                        f.setMotors(-power, -power);
+                    } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                        f.setMotors(-power, power);
+                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
+                        f.setMotors(power, -power);
+                   }
+                }
+            }
+
+            
+            @Override
+            public void keyReleased(KeyEvent e) {
+            	if (e.getKeyCode() == KeyEvent.VK_W ||
+            		e.getKeyCode() == KeyEvent.VK_S ||
+            		e.getKeyCode() == KeyEvent.VK_A ||
+            		e.getKeyCode() == KeyEvent.VK_D) {
+                	f.stop();
+                } 
+            }
+        });
+
 ```
 
 ---
