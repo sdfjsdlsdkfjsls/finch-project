@@ -13,7 +13,7 @@
 <details>
 <summary><strong>Inspiration for the Project</strong></summary>
 
-I wanted to serve people **Oreos** as a prize for participating!
+VThe creation of afinch robot that implements the controls of an average video game; which allows for WASD keyboard inputs along with a toggle sprint system which quickens the speed of the robot's movement.
 </details>
 
 ---
