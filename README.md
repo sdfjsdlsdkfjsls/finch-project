@@ -12,7 +12,7 @@
 |:---------:| :-----------:|:------------|
 |    ✅     | Familiarize  | Learn how to: <ul><li>Connect to the robot</li><li>Interpret what built-in sensors detect</li><li>Program basics in SNAP!</li><li>Setup local developing environment to code in Java</li></ul>|
 |    ✅     | Concept And Idea | Develop the idea for the finch robot|
-|    ✅     | 3D Design    | Designed a 3d model that allows the storage of coin like objects|
+|    ✅     | 3D Design    | Design a 3D model that allows the storage of coin-like objects|
 |    ✅     | Develop Code | Develop a code to allow the finch robot to complete a task that is asked for it|
 
 ---
