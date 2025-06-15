@@ -37,47 +37,45 @@ First, we decided what we wanted to model in 3D for our finch modification. Afte
 ### Code to Highlight
 ```java
         frame.addKeyListener(new KeyAdapter() {
-    		boolean isEnabled = true;
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_I) {
-                    isEnabled = !isEnabled;
-                }
-                if(isEnabled) {
-                	int power = 100;
-                    if (e.getKeyCode() == KeyEvent.VK_W) {
-                        f.setMotors(power, power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                        f.setMotors(-power, -power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_A) {
-                        f.setMotors(-power, power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
-                        f.setMotors(power, -power);
-                   }	
-                } else {
-                	int power = 25;
-                    if (e.getKeyCode() == KeyEvent.VK_W) {
-                        f.setMotors(power, power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                        f.setMotors(-power, -power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_A) {
-                        f.setMotors(-power, power);
-                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
-                        f.setMotors(power, -power);
-                   }
-                }
-            }
+    		boolean sprintToggle = true;
+            	@Override
+            	public void keyPressed(KeyEvent e) {
+			int left = 0;
+			int right = 0;
+		        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+				sprintToggle = !sprintToggle;
+		        }
+                        if (e.getKeyCode() == KeyEvent.VK_W) {
+                	    	left = 25;
+			    	right = 25;
+                    	} else if (e.getKeyCode() == KeyEvent.VK_S) {
+                       	     	left = 25;
+			    	right = 25;
+                    	} else if (e.getKeyCode() == KeyEvent.VK_A) {
+                           	 left = -25;
+			    	right = 25;
+                    	} else if (e.getKeyCode() == KeyEvent.VK_D) {
+                            	left = 25;
+			    	right = -25;
+                    	}
+		    	if (sprintToggle) {
+		    		f.setMotors(3*left,3*right);
+		    	}
+		    	else {
+				f.setMotors(left,right);
+		    	}
+            	}
 
             
-            @Override
-            public void keyReleased(KeyEvent e) {
-            	if (e.getKeyCode() == KeyEvent.VK_W ||
-            		e.getKeyCode() == KeyEvent.VK_S ||
-            		e.getKeyCode() == KeyEvent.VK_A ||
-            		e.getKeyCode() == KeyEvent.VK_D) {
-                	f.stop();
-                } 
-            }
+            	@Override
+            	public void keyReleased(KeyEvent e) {
+            		if (e.getKeyCode() == KeyEvent.VK_W ||
+            			e.getKeyCode() == KeyEvent.VK_S ||
+            			e.getKeyCode() == KeyEvent.VK_A ||
+            			e.getKeyCode() == KeyEvent.VK_D) {
+                		f.stop();
+                	} 
+            	}
         });
 
 ```
