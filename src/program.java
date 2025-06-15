@@ -32,44 +32,44 @@ public class program {
         
         frame.addKeyListener(new KeyAdapter() {
     		boolean sprintToggle = true;
-            @Override
-            public void keyPressed(KeyEvent e) {
-		    int left = 0;
-		    int right = 0;
-		    if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-			    sprintToggle = !sprintToggle;
-		    }
-                    if (e.getKeyCode() == KeyEvent.VK_W) {
-                	    left = 25;
-			    right = 25;
-                    } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                            left = 25;
-			    right = 25;
-                    } else if (e.getKeyCode() == KeyEvent.VK_A) {
-                            left = -25;
-			    right = 25;
-                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
-                            left = 25;
-			    right = -25;
-                    }
-		    if (sprintToggle) {
-		    	f.setMotors(3*left,3*right);
-		    }
-		    else {
-			f.setMotors(left,right);
-		    }
-            }
+            	@Override
+            	public void keyPressed(KeyEvent e) {
+			int left = 0;
+			int right = 0;
+		        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+				sprintToggle = !sprintToggle;
+		        }
+                        if (e.getKeyCode() == KeyEvent.VK_W) {
+                	    	left = 25;
+			    	right = 25;
+                    	} else if (e.getKeyCode() == KeyEvent.VK_S) {
+                       	     	left = 25;
+			    	right = 25;
+                    	} else if (e.getKeyCode() == KeyEvent.VK_A) {
+                           	 left = -25;
+			    	right = 25;
+                    	} else if (e.getKeyCode() == KeyEvent.VK_D) {
+                            	left = 25;
+			    	right = -25;
+                    	}
+		    	if (sprintToggle) {
+		    		f.setMotors(3*left,3*right);
+		    	}
+		    	else {
+				f.setMotors(left,right);
+		    	}
+            	}
 
             
-            @Override
-            public void keyReleased(KeyEvent e) {
-            	if (e.getKeyCode() == KeyEvent.VK_W ||
-            		e.getKeyCode() == KeyEvent.VK_S ||
-            		e.getKeyCode() == KeyEvent.VK_A ||
-            		e.getKeyCode() == KeyEvent.VK_D) {
-                	f.stop();
-                } 
-            }
+            	@Override
+            	public void keyReleased(KeyEvent e) {
+            		if (e.getKeyCode() == KeyEvent.VK_W ||
+            			e.getKeyCode() == KeyEvent.VK_S ||
+            			e.getKeyCode() == KeyEvent.VK_A ||
+            			e.getKeyCode() == KeyEvent.VK_D) {
+                		f.stop();
+                	} 
+            	}
         });
         
         
