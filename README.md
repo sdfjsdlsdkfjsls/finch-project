@@ -1,6 +1,6 @@
 # finch-robot
 <details>
-<summary><strong>heh</strong></summary>
+<summary>heh</summary>
 
 <img src="https://preview.redd.it/does-anyone-know-the-source-of-the-zena-cat-images-outside-v0-atue5kweyahd1.jpeg?width=640&crop=smart&auto=webp&s=84a89e38704c18b7b622d6bb07bd301e5e76b552" width="250">
 
