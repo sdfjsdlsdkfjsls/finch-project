@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 
 public class program {
 	public static void main(String[] args) {
-		boolean isEnabled = true;
 		Finch f = new Finch();
 		//public void setMove(String direction, double distance, double speed)
 		//f.setMove("F",100,100);
@@ -15,49 +14,49 @@ public class program {
         
         frame.setLayout(new FlowLayout());
 
-//      static JFrame text = new JFrame("textfield");;
-//      
-//      JButton forwardBot = new JButton("Forward");
-//      forwardBot.addActionListener(e -> {
-//          System.out.println("forward");
-//          f.setMove("F",100,100);
-//      });
-//      
-//      JButton backwardsBot = new JButton("Backward");
-//      
-//      backwardsBot.addActionListener(e -> {
-//          System.out.println("backward");
-//          f.setMove("B",100,100);
-//      });
+        JFrame text = new JFrame("textfield");;
+      
+      JButton forwardBot = new JButton("Forward");
+      forwardBot.addActionListener(e -> {
+          System.out.println("forward");
+          f.setMove("F",100,100);
+      });
+      
+      JButton backwardsBot = new JButton("Backward");
+      
+      backwardsBot.addActionListener(e -> {
+          System.out.println("backward");
+          f.setMove("B",100,100);
+      });
         
         frame.addKeyListener(new KeyAdapter() {
-    		boolean sprintToggle = true;
+    		boolean sprintToggle = false;
             	@Override
             	public void keyPressed(KeyEvent e) {
-			int left = 0;
-			int right = 0;
-		        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-				sprintToggle = !sprintToggle;
-		        }
-                        if (e.getKeyCode() == KeyEvent.VK_W) {
-                	    	left = 25;
-			    	right = 25;
-                    	} else if (e.getKeyCode() == KeyEvent.VK_S) {
-                       	     	left = 25;
-			    	right = 25;
-                    	} else if (e.getKeyCode() == KeyEvent.VK_A) {
-                           	 left = -25;
-			    	right = 25;
-                    	} else if (e.getKeyCode() == KeyEvent.VK_D) {
-                            	left = 25;
-			    	right = -25;
-                    	}
-		    	if (sprintToggle) {
-		    		f.setMotors(3*left,3*right);
-		    	}
-		    	else {
-				f.setMotors(left,right);
-		    	}
+	            		int left = 0;
+	            		int right = 0;
+	            		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+	            			sprintToggle = true;
+	            		}
+	                	if (e.getKeyCode() == KeyEvent.VK_W) {
+	                    	left = 25;
+	                    	right = 25;
+	                	} else if (e.getKeyCode() == KeyEvent.VK_S) {
+	                   		left = -25;
+	                   		right = -25;
+	                	} else if (e.getKeyCode() == KeyEvent.VK_A) {
+	                        left = -25;
+	                        right = 25;
+	                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
+	                        left = 25;
+	                        right = -25;
+	                    }
+	                    if (sprintToggle) {
+	                    	f.setMotors(3*left,3*right);
+	                    }
+	                    else {
+	                    	f.setMotors(left,right);
+	                    }
             	}
 
             
@@ -69,6 +68,9 @@ public class program {
             			e.getKeyCode() == KeyEvent.VK_D) {
                 		f.stop();
                 	} 
+            		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            			sprintToggle = false;
+            		}
             	}
         });
         
