@@ -37,33 +37,33 @@ First, we decided what we wanted to model in 3D for our finch modification. Afte
 ### Code to Highlight
 ```java
         frame.addKeyListener(new KeyAdapter() {
-    		boolean sprintToggle = true;
+    		boolean sprintToggle = false;
             	@Override
             	public void keyPressed(KeyEvent e) {
-			int left = 0;
-			int right = 0;
-		        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-				sprintToggle = !sprintToggle;
-		        }
-                        if (e.getKeyCode() == KeyEvent.VK_W) {
-                	    	left = 25;
-			    	right = 25;
-                    	} else if (e.getKeyCode() == KeyEvent.VK_S) {
-                       	     	left = 25;
-			    	right = 25;
-                    	} else if (e.getKeyCode() == KeyEvent.VK_A) {
-                           	 left = -25;
-			    	right = 25;
-                    	} else if (e.getKeyCode() == KeyEvent.VK_D) {
-                            	left = 25;
-			    	right = -25;
-                    	}
-		    	if (sprintToggle) {
-		    		f.setMotors(3*left,3*right);
-		    	}
-		    	else {
-				f.setMotors(left,right);
-		    	}
+	            		int left = 0;
+	            		int right = 0;
+	            		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+	            			sprintToggle = true;
+	            		}
+	                	if (e.getKeyCode() == KeyEvent.VK_W) {
+	                    	left = 25;
+	                    	right = 25;
+	                	} else if (e.getKeyCode() == KeyEvent.VK_S) {
+	                   		left = -25;
+	                   		right = -25;
+	                	} else if (e.getKeyCode() == KeyEvent.VK_A) {
+	                        left = -25;
+	                        right = 25;
+	                    } else if (e.getKeyCode() == KeyEvent.VK_D) {
+	                        left = 25;
+	                        right = -25;
+	                    }
+	                    if (sprintToggle) {
+	                    	f.setMotors(3*left,3*right);
+	                    }
+	                    else {
+	                    	f.setMotors(left,right);
+	                    }
             	}
 
             
@@ -75,6 +75,9 @@ First, we decided what we wanted to model in 3D for our finch modification. Afte
             			e.getKeyCode() == KeyEvent.VK_D) {
                 		f.stop();
                 	} 
+            		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+            			sprintToggle = false;
+            		}
             	}
         });
 
